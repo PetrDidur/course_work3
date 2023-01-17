@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
+
+from api.views import api_blueprint
 from utils import get_posts_all, get_comments_by_post_id, get_post_by_pk, search_for_posts, get_posts_by_user
 PATH_POSTS = 'data/posts.json'
 
 app = Flask(__name__)
-
+app.register_blueprint(api_blueprint)
 
 @app.route('/')
 def index():  # put application's code here
@@ -28,8 +30,7 @@ def search_page():
 
 @app.route('/users/<username>')
 def user_feed_page(username):
-    s = request.args.get(username)
-    posts_by_name = get_posts_by_user(s)
+    posts_by_name = get_posts_by_user(username)
     return render_template('user-feed.html', posts_by_name=posts_by_name, username=username)
 
 

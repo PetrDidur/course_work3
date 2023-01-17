@@ -6,7 +6,7 @@ def get_posts_all(path_posts):
             data_posts = json.load(file)
         return data_posts
 
-#test = 'johnny'
+test = 'johnny'
 def get_posts_by_user(user_name):
         user_posts = []
         for post in get_posts_all(path_posts='data/posts.json'):
@@ -14,7 +14,7 @@ def get_posts_by_user(user_name):
                 user_posts.append(post)
         return user_posts
 
-#print(get_posts_by_user(test))
+print(get_posts_by_user(test))
 
 
 
